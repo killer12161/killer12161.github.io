@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aneesh Kumar Poddar // Cyber Security Portfolio</title>
+    <meta name="description" content="Offensive Security, Penetration Testing & Systems Engineering Portfolio of Aneesh Kumar Poddar featuring interactive 3D WebGL cybernetic interface." />
+    <link rel="stylesheet" href="./style.css" />
+    <!-- Fonts: Outfit for sleek typography, Space Mono for technical telemetry, Orbitron for cyber headers -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/webp" href="./icon.webp" />
+  </head>
+  <body class="theme-neon">
+    <!-- Cyberpunk Canvas Viewport -->
+    <canvas id="webgl-canvas"></canvas>
+
+    <!-- Ambient Grid & Vignette Overlay -->
+    <div class="cyber-vignette"></div>
+    <div class="cyber-scanlines"></div>
+
+    <!-- High-Tech Cyber Preloader -->
+    <div id="loader" class="loader-overlay">
+      <div class="loader-content">
+        <div class="loader-ring-wrapper">
+          <div class="loader-ring ring-outer"></div>
+          <div class="loader-ring ring-mid"></div>
+          <div class="loader-ring ring-inner"></div>
+          <div class="loader-core-icon">
+            <img src="./icon.webp" alt="Aneesh Logo" class="loader-avatar-img" />
+          </div>
+        </div>
+
+        <div class="loader-status">
+          <div class="loader-brand">ANEESH PODDAR // PROTOCOL_09</div>
+          <div class="loader-message" id="loader-msg">INITIALIZING NEURAL CO-PROCESSOR...</div>
+          <div class="loader-bar-track">
+            <div class="loader-bar-fill" id="loader-bar"></div>
+          </div>
+          <div class="loader-metrics">
+            <span id="loader-percent">0%</span>
+            <span class="loader-bytes" id="loader-sub">STREAMING 3D ASSETS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HUD Header Navigation -->
+    <header class="hud-header">
+      <div class="hud-brand">
+        <img src="./icon.webp" alt="Aneesh Poddar" class="brand-avatar-img" />
+        <div class="brand-status-dot"></div>
+        <div class="brand-text">
+          <span class="brand-title">ANEESH PODDAR</span>
+          <span class="brand-sub">SEC_OPS // OFFENSIVE SECURITY</span>
+        </div>
+      </div>
+
+      <nav class="hud-nav">
+        <a href="#hero" class="nav-link active" data-target="0">CORE</a>
+        <a href="#arsenal" class="nav-link" data-target="1">ARSENAL</a>
+        <a href="#projects" class="nav-link" data-target="2">PROJECTS</a>
+        <a href="#credentials" class="nav-link" data-target="3">CREDENTIALS</a>
+        <a href="#contact" class="nav-link" data-target="4">CONTACT</a>
+      </nav>
+
+      <div class="hud-actions">
+        <!-- View CV In-Page Modal Trigger -->
+        <button id="hud-view-cv-btn" class="hud-btn hud-resume-btn" title="Inspect Official Curriculum Vitae">
+          <span class="btn-icon">📄</span>
+          <span class="btn-label">VIEW CV</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Side HUD Telemetry & Theme Switcher -->
+    <aside class="hud-side-panel">
+      <div class="telemetry-box">
+        <div class="telemetry-label">CAMERA COORDS</div>
+        <div class="telemetry-val" id="telemetry-cam">X: 0.00 | Y: 0.00 | Z: 3.50</div>
+      </div>
+      <div class="telemetry-box">
+        <div class="telemetry-label">LIGHTING MATRIX</div>
+        <div class="theme-picker">
+          <button class="theme-btn active" data-theme="neon" title="Neon Cyan & Magenta">
+            <span class="theme-swatch swatch-neon"></span>
+            <span class="theme-name">NEON</span>
+          </button>
+          <button class="theme-btn" data-theme="crimson" title="Crimson Core & Amber">
+            <span class="theme-swatch swatch-crimson"></span>
+            <span class="theme-name">CRIMSON</span>
+          </button>
+          <button class="theme-btn" data-theme="matrix" title="Matrix Emerald & Ghost">
+            <span class="theme-swatch swatch-matrix"></span>
+            <span class="theme-name">EMERALD</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Scroll Story Content Layers -->
+    <main class="story-container">
+      <!-- Section 1: Hero (CORE) -->
+      <section id="hero" class="story-section section-hero active">
+        <div class="glass-panel hero-card card-left">
+          <div class="chip-badge pulse">
+            <span class="chip-dot"></span> ROOT ACCESS GRANTED // PENTEST & DEV
+          </div>
+          <h1 class="glitch-text" data-text="ANEESH KUMAR PODDAR">ANEESH KUMAR PODDAR</h1>
+          <div class="hero-role-title">PENETRATION TESTER & CYBER SECURITY SPECIALIST</div>
+          <p class="hero-desc">
+            Made-to-measure security architectures that fortify critical infrastructure, isolate vulnerabilities, and engineer uncompromising resilience. Passionate about ethical hacking, offensive tooling, and AI-driven defense.
+          </p>
+          <div class="hero-cta-group">
+            <a href="#projects" class="cta-btn primary-cta" id="cta-view-projects">
+              <span class="btn-glow"></span>
+              <span class="btn-text">VIEW PROJECTS</span>
+              <span class="btn-arrow">→</span>
+            </a>
+            <button class="cta-btn secondary-cta" id="cta-view-cv" title="Inspect Official Curriculum Vitae">
+              <span class="btn-icon">👁️</span>
+              <span class="btn-text">VIEW CV</span>
+            </button>
+          </div>
+          <div class="metrics-strip">
+            <div class="metric-item">
+              <span class="metric-num">Deltaware</span>
+              <span class="metric-name">PENTEST INTERN</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+              <span class="metric-num">BCA → MCA</span>
+              <span class="metric-name">AMITY UNIVERSITY</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+              <span class="metric-num">Craw Sec</span>
+              <span class="metric-name">CYBER DIPLOMA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="scroll-prompt">
+          <div class="mouse-icon">
+            <div class="mouse-wheel"></div>
+          </div>
+          <span class="prompt-text">SCROLL TO UNPACK ARSENAL</span>
+        </div>
+      </section>
+
+      <!-- Section 2: Technical Arsenal & Skills (ARSENAL) -->
+      <section id="arsenal" class="story-section section-arsenal">
+        <div class="glass-panel info-card card-right arsenal-card">
+          <div class="chip-badge">
+            <span class="chip-dot cyan"></span> SUBSYSTEM 01 // TACTICAL ARSENAL
+          </div>
+          <h2>CORE ARCHITECTURE & SKILLS</h2>
+          <p class="section-intro">
+            A proactive Pentester with robust cybersecurity fundamentals. Focused on detecting attack vectors, exploiting vulnerabilities ethically, and strengthening enterprise security perimeters.
+          </p>
+          
+          <div class="skills-grid">
+            <div class="skill-tile">
+              <div class="skill-icon-wrap cyan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                </svg>
+              </div>
+              <div class="skill-content">
+                <h4>Web App Security</h4>
+                <p>Burp Suite, OWASP Top 10, SQL injection, XSS exploitation & session hijacking.</p>
+              </div>
+            </div>
+
+            <div class="skill-tile">
+              <div class="skill-icon-wrap purple">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                </svg>
+              </div>
+              <div class="skill-content">
+                <h4>Ethical Hacking</h4>
+                <p>Nmap reconnaissance, Metasploit payload delivery, Wireshark packet analysis.</p>
+              </div>
+            </div>
+
+            <div class="skill-tile">
+              <div class="skill-icon-wrap cyan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                </svg>
+              </div>
+              <div class="skill-content">
+                <h4>Networking</h4>
+                <p>TCP/IP, DHCP, DNS, VLAN segmentation, firewall bypass & traffic routing.</p>
+              </div>
+            </div>
+
+            <div class="skill-tile">
+              <div class="skill-icon-wrap purple">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                </svg>
+              </div>
+              <div class="skill-content">
+                <h4>Python & Scripting</h4>
+                <p>Exploit automation, NumPy, pandas, matplotlib, Flask, async network scanners.</p>
+              </div>
+            </div>
+
+            <div class="skill-tile">
+              <div class="skill-icon-wrap cyan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
+                </svg>
+              </div>
+              <div class="skill-content">
+                <h4>Linux / OS</h4>
+                <p>Kali Linux power-user, RHEL administration, defensive Bash/Zsh scripting.</p>
+              </div>
+            </div>
+
+            <div class="skill-tile">
+              <div class="skill-icon-wrap purple">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+              </div>
+              <div class="skill-content">
+                <h4>Digital Forensics</h4>
+                <p>Deep file carving, memory dumps with Autopsy, FTK Imager, Magnet Axiom.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Infinite Cyber Tools Marquee Ticker -->
+          <div class="tool-marquee-container">
+            <div class="tool-marquee-label">OPERATIONAL TOOLSETS</div>
+            <div class="tool-marquee-track">
+              <div class="tool-marquee-content">
+                <span>Nmap</span> • <span>Burp Suite</span> • <span>Metasploit</span> • <span>Wireshark</span> • <span>SQLMap</span> • <span>WPScan</span> • <span>Hydra</span> • <span>Autopsy</span> • <span>FTK Imager</span> • <span>Magnet Axiom</span> • <span>Rust</span> • <span>OpenCL</span> • <span>Python</span> • <span>Kali Linux</span> • <span>Nmap</span> • <span>Burp Suite</span> • <span>Metasploit</span> • <span>Wireshark</span> • <span>SQLMap</span> • <span>WPScan</span> • <span>Hydra</span> • <span>Autopsy</span> • <span>FTK Imager</span> • <span>Magnet Axiom</span> • <span>Rust</span> • <span>OpenCL</span> • <span>Python</span> • <span>Kali Linux</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Featured Operations / Projects (PROJECTS) -->
+      <section id="projects" class="story-section section-projects">
+        <div class="glass-panel info-card card-left projects-card">
+          <div class="chip-badge">
+            <span class="chip-dot magenta"></span> SUBSYSTEM 02 // OFFENSIVE ARSENAL
+          </div>
+          <h2>FEATURED OPERATIONS</h2>
+          <p class="section-intro">
+            High-performance security tools engineered for rapid vulnerability discovery, network reconnaissance, and cryptographic hash cracking.
+          </p>
+
+          <!-- Interactive Project Switcher Tabs -->
+          <div class="project-tabs">
+            <button class="project-tab active" data-project="nexa">
+              <span class="tab-indicator"></span> NEXA
+            </button>
+            <button class="project-tab" data-project="hashsmasher">
+              <span class="tab-indicator"></span> HashSmasher
+            </button>
+          </div>
+
+          <!-- Project Detail Showcase Panels -->
+          <div class="project-showcase">
+            <!-- Project 1: NEXA -->
+            <div class="project-panel active" id="panel-nexa">
+              <div class="project-media-wrap">
+                <img src="./project_nexa.webp" alt="NEXA Port Scanner" class="project-img" />
+                <div class="project-img-overlay"></div>
+              </div>
+              <div class="project-meta">
+                <div class="project-type">Intelligent Port Scanner</div>
+                <h3 class="project-name">NEXA // SCANNER</h3>
+                <p class="project-desc">
+                  Python-based async port scanner with Nmap enrichment and AI-powered vulnerability correlation. Built to rapidly discover network perimeters and provide contextual security intel on the fly.
+                </p>
+                <div class="project-tags">
+                  <span class="tag">Python</span>
+                  <span class="tag">Nmap</span>
+                  <span class="tag">AI Analysis</span>
+                  <span class="tag">AsyncIO</span>
+                </div>
+                <div class="project-links">
+                  <a href="https://github.com/killer12161/NEXA" target="_blank" rel="noopener noreferrer" class="project-cta-btn">
+                    <span>VIEW GITHUB REPO</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="cta-arrow">
+                      <path d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 2: HashSmasher -->
+            <div class="project-panel" id="panel-hashsmasher">
+              <div class="project-media-wrap">
+                <img src="./project_hashsmasher.webp" alt="HashSmasher GPU Cracker" class="project-img" />
+                <div class="project-img-overlay"></div>
+              </div>
+              <div class="project-meta">
+                <div class="project-type">GPU/CPU Hash Cracker</div>
+                <h3 class="project-name">HASHSMASHER // RUST</h3>
+                <p class="project-desc">
+                  High-throughput Rust + Python cracking utility powered by OpenCL hardware acceleration. Engineered for rapid cryptographic hash resolution in penetration testing and forensic recovery.
+                </p>
+                <div class="project-tags">
+                  <span class="tag">Rust</span>
+                  <span class="tag">Python</span>
+                  <span class="tag">OpenCL</span>
+                  <span class="tag">Cryptography</span>
+                </div>
+                <div class="project-links">
+                  <a href="https://github.com/killer12161/HashSmasher" target="_blank" rel="noopener noreferrer" class="project-cta-btn">
+                    <span>VIEW GITHUB REPO</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="cta-arrow">
+                      <path d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Experience & Credentials (CREDENTIALS) -->
+      <section id="credentials" class="story-section section-credentials">
+        <div class="glass-panel info-card card-right credentials-card">
+          <div class="chip-badge">
+            <span class="chip-dot amber"></span> SUBSYSTEM 03 // AUDITED RECORDS
+          </div>
+          <h2>LOGS & VERIFIED CREDENTIALS</h2>
+
+          <div class="credentials-layout">
+            <!-- Left Side: Experience & Education Timeline -->
+            <div class="timeline-column">
+              <div class="column-subheading">
+                <span class="sub-dot cyan"></span> EXPERIENCE LOG
+              </div>
+              <div class="timeline-block">
+                <div class="timeline-role">Penetration Tester Intern</div>
+                <div class="timeline-org">Deltaware Solutions Pvt. Ltd.</div>
+                <div class="timeline-period">AUG 2025 – OCT 2025 // REMOTE</div>
+                <p class="timeline-desc">
+                  Executed vulnerability assessments and penetration tests across customer network perimeters. Documented findings and formulated actionable remediation strategies.
+                </p>
+              </div>
+
+              <div class="column-subheading mt-6">
+                <span class="sub-dot purple"></span> ACADEMIC ARRAY
+              </div>
+              <div class="timeline-block">
+                <div class="timeline-role">Master of Computer Applications (MCA)</div>
+                <div class="timeline-org">Amity University Online</div>
+                <div class="timeline-period">2026 – PRESENT</div>
+              </div>
+              <div class="timeline-block">
+                <div class="timeline-role">Cyber Security Diploma (1-Year)</div>
+                <div class="timeline-org">Craw Security</div>
+                <div class="timeline-period">2023 – 2025</div>
+              </div>
+              <div class="timeline-block">
+                <div class="timeline-role">Bachelor of Computer Applications (BCA)</div>
+                <div class="timeline-org">Amity University Online</div>
+                <div class="timeline-period">2022 – 2025</div>
+              </div>
+            </div>
+
+            <!-- Right Side: Clickable Verified Certifications Grid -->
+            <div class="certs-column">
+              <div class="column-subheading">
+                <span class="sub-dot amber"></span> VERIFIED CERTIFICATIONS (CLICK TO AUDIT)
+              </div>
+              <div class="certs-grid" id="certs-container">
+                <div class="cert-tile" data-cert="/Certificates/Aneesh EH.pdf" data-title="Certified Ethical Hacker (CEH)">
+                  <div class="cert-code cyan">CEH</div>
+                  <div class="cert-name">Ethical Hacker</div>
+                </div>
+                <div class="cert-tile" data-cert="/Certificates/Aneesh CHFI.pdf" data-title="Computer Hacking Forensic Investigator">
+                  <div class="cert-code purple">CHFI</div>
+                  <div class="cert-name">Forensic Investigator</div>
+                </div>
+                <div class="cert-tile" data-cert="/Certificates/Aneesh APT.pdf" data-title="Advanced Pentesting (APT)">
+                  <div class="cert-code white">APT</div>
+                  <div class="cert-name">Advanced Pentest</div>
+                </div>
+                <div class="cert-tile" data-cert="/Certificates/Aneesh_Kumar_poddar_AWS_Security_0.pdf" data-title="AWS Security Specialty">
+                  <div class="cert-code purple">AWS</div>
+                  <div class="cert-name">Security Specialty</div>
+                </div>
+                <div class="cert-tile" data-cert="/Certificates/Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate.pdf" data-title="Oracle Cloud AI Foundations Associate 2025">
+                  <div class="cert-code cyan">OCI AI</div>
+                  <div class="cert-name">Foundations 2025</div>
+                </div>
+                <div class="cert-tile" data-cert="/Certificates/Aneesh_Kumar_poddar_Internet_of_Things_Pentesting_0.pdf" data-title="IoT Pentesting Specialist">
+                  <div class="cert-code amber">IoT</div>
+                  <div class="cert-name">IoT Pentesting</div>
+                </div>
+                <div class="cert-tile" data-cert="/Certificates/Aneesh Kumar Poddar webapp.pdf" data-title="Web Application Pentesting">
+                  <div class="cert-code cyan">WEB</div>
+                  <div class="cert-name">App Pentesting</div>
+                </div>
+                <div class="cert-tile" data-cert="/Certificates/Aneesh Kumar Poddar mobileapp.pdf" data-title="Mobile Application Pentesting">
+                  <div class="cert-code purple">MOBILE</div>
+                  <div class="cert-name">App Pentesting</div>
+                </div>
+                <div class="cert-tile" data-cert="/Certificates/Aneesh Networking.pdf" data-title="Networking Fundamentals">
+                  <div class="cert-code white">NET</div>
+                  <div class="cert-name">Networking</div>
+                </div>
+                <div class="cert-tile" data-cert="/Certificates/Aneesh Python.pdf" data-title="Python Programming Certification">
+                  <div class="cert-code cyan">PYTHON</div>
+                  <div class="cert-name">Programming</div>
+                </div>
+                <div class="cert-tile" data-cert="/Certificates/Deltaware_Internship.pdf" data-title="Deltaware Internship Certificate">
+                  <div class="cert-code purple">INTERN</div>
+                  <div class="cert-name">Deltaware Cert</div>
+                </div>
+                <a href="https://linkedin.com/in/aneesh-poddar-189aa328b" target="_blank" rel="noopener noreferrer" class="cert-tile cert-linkedin-tile" title="Visit Aneesh's Official LinkedIn Profile">
+                  <div class="cert-code white">LINKEDIN ↗</div>
+                  <div class="cert-name">Main Account</div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Dossier & Overdrive Terminal (CONTACT) -->
+      <section id="contact" class="story-section section-contact">
+        <div class="glass-panel contact-dossier-card card-left">
+          <div class="chip-badge pulse">
+            <span class="chip-dot neon-pulse"></span> FINAL SEQUENCE // SEC_OPS DOSSIER
+          </div>
+          <h2>COMMUNICATION & ACCESS</h2>
+          <p class="section-intro">
+            Ready to reinforce your cyber defenses or collaborate on offensive security architectures? Establish direct communication.
+          </p>
+
+          <div class="dossier-body">
+            <!-- Portrait & Identity -->
+            <div class="dossier-portrait-wrap">
+              <div class="portrait-frame">
+                <img src="./card.webp" alt="Aneesh Poddar Profile Card" class="portrait-img" />
+                <div class="portrait-overlay"></div>
+              </div>
+              <div class="portrait-tag">
+                <span class="status-live-dot"></span> IDENTITY CONFIRMED
+              </div>
+            </div>
+
+            <!-- Direct Contact List -->
+            <div class="dossier-info">
+              <div class="dossier-name">Aneesh Poddar</div>
+              <div class="dossier-role">PENETRATION TESTER & SECURITY RESEARCHER</div>
+
+              <div class="contact-links-list">
+                <a href="tel:+919311090320" class="contact-link-row group">
+                  <div class="contact-icon-box purple">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                    </svg>
+                  </div>
+                  <div class="contact-text-box">
+                    <span class="contact-lbl">SECURE VOICE LINE</span>
+                    <span class="contact-val">+91-9311090320</span>
+                  </div>
+                </a>
+
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=aneeshpoddar63@gmail.com" target="_blank" rel="noopener noreferrer" class="contact-link-row group">
+                  <div class="contact-icon-box cyan">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                  </div>
+                  <div class="contact-text-box">
+                    <span class="contact-lbl">PRIMARY DISPATCH</span>
+                    <span class="contact-val">aneeshpoddar63@gmail.com</span>
+                  </div>
+                </a>
+
+                <a href="https://linkedin.com/in/aneesh-poddar-189aa328b" target="_blank" rel="noopener noreferrer" class="contact-link-row group">
+                  <div class="contact-icon-box blue">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg>
+                  </div>
+                  <div class="contact-text-box">
+                    <span class="contact-lbl">PROFESSIONAL NETWORK</span>
+                    <span class="contact-val">linkedin.com/in/aneesh-poddar</span>
+                  </div>
+                </a>
+
+                <a href="https://github.com/killer12161" target="_blank" rel="noopener noreferrer" class="contact-link-row group">
+                  <div class="contact-icon-box white">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                    </svg>
+                  </div>
+                  <div class="contact-text-box">
+                    <span class="contact-lbl">CODE REPOSITORY</span>
+                    <span class="contact-val">github.com/killer12161</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Protocol Overdrive Interactive Button -->
+          <div class="overdrive-action-container mt-6">
+            <a id="btn-overdrive" href="https://www.instagram.com/cybersamuraiak/" target="_blank" rel="noopener noreferrer" class="overdrive-btn" title="Open @cybersamuraiak on Instagram">
+              <span class="overdrive-pulse"></span>
+              <span class="overdrive-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="display: block;">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </span>
+              <span class="overdrive-text">OPEN INSTAGRAM // @CYBERSAMURAIAK</span>
+            </a>
+            <div id="overdrive-status" class="overdrive-feedback">INSTAGRAM LINK READY [ CLICK TO OPEN ]</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Certificate Lightbox / Audit Modal -->
+    <div id="cert-modal" class="cert-modal-overlay">
+      <div class="cert-modal-card">
+        <div class="cert-modal-header">
+          <div class="cert-modal-title-group">
+            <span id="cert-modal-tag" class="cert-modal-tag">AUDITED CREDENTIAL</span>
+            <h3 id="cert-modal-title">Certificate Inspection</h3>
+          </div>
+          <div class="cert-modal-actions">
+            <a id="cert-modal-download" href="#" target="_blank" class="cert-action-btn" title="Open Original File In New Tab">
+              <span>OPEN EXTERNAL ↗</span>
+            </a>
+            <button id="cert-modal-close" class="cert-close-btn" title="Close Inspection View">✕</button>
+          </div>
+        </div>
+        <div class="cert-modal-body" id="cert-modal-body">
+          <div id="cert-modal-loader" class="cert-loader-spinner"></div>
+          
+          <!-- Native High-Resolution Bright PDF Canvas Viewer -->
+          <div id="cert-modal-pdf-container" class="cert-pdf-scroll-view hidden"></div>
+
+          <!-- Floating Liquid Glass Zoom Controls -->
+          <div id="pdf-floating-toolbar" class="pdf-floating-toolbar hidden">
+            <button id="pdf-zoom-out" class="pdf-tool-btn" title="Zoom Out" aria-label="Zoom Out">−</button>
+            <span id="pdf-zoom-label" class="pdf-tool-label">100%</span>
+            <button id="pdf-zoom-in" class="pdf-tool-btn" title="Zoom In" aria-label="Zoom In">+</button>
+            <button id="pdf-zoom-fit" class="pdf-tool-btn pdf-tool-btn-fit" title="Fit to Width">FIT WIDTH</button>
+          </div>
+
+          <iframe id="cert-modal-iframe" src="" class="cert-iframe hidden" title="Document Viewer"></iframe>
+          <img id="cert-modal-img" src="" alt="Certificate" class="cert-display-img hidden" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom HUD Status Bar -->
+    <footer class="hud-footer">
+      <div class="footer-left">
+        <span class="status-indicator">●</span>
+        <span class="status-msg">ANEESH PODDAR // SEC_OPS PORTFOLIO</span>
+        <span class="footer-sep">|</span>
+        <span class="footer-fps" id="fps-counter">60 FPS</span>
+      </div>
+      <div class="footer-center">
+        <div class="scroll-progress-container">
+          <div class="scroll-progress-fill" id="scroll-progress"></div>
+        </div>
+      </div>
+      <div class="footer-right">
+        <span class="hud-tip" id="hud-tip-text">DRAG TO TILT • SCROLL TO EXPLORE</span>
+      </div>
+    </footer>
+
+    <!-- Main Logic Script -->
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
