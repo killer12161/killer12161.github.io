@@ -620,8 +620,7 @@ const PDF_IMAGE_MANIFEST = {
   "/Aneesh_Kumar_Poddar_Resume.pdf": [
     "/cv_pages/cv_page_1.png",
     "/cv_pages/cv_page_2.png",
-    "/cv_pages/cv_page_3.png",
-    "/cv_pages/cv_page_4.png"
+    "/cv_pages/cv_page_3.png"
   ],
   "/Certificates/amity_Certificate.pdf": [
     "/cert_pages/amity_Certificate_p1.png"
